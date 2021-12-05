@@ -47,13 +47,13 @@ const date = `${pad(month + 1)}-${pad(dates[month][day])}-2021`; // +1 is beacus
 function printdates() {
     let year = 0;
     for (let i = 0; i < (max - min) * 365; i++) {
-        const date = `${pad(month + 1)}-${pad(dates[month][day])}-${years[year]}`
+        const date = `${pad(month + 1)}${pad(dates[month][day])}${years[year]}`
 
         // check FOR PALINDROME and AMBIGRAM
-        let str = date.replace(/-/g, "");
-        let rev = str.split("").reverse().join("");
-        if (rev === str) {
-            if (isAmbigram(str)) {
+        // let str = date.replace(/-/g, "");
+        let rev = date.split("").reverse().join("");
+        if (date === rev) {
+            if (isAmbigram(rev)) {
                 console.log(date)
             }
         }
