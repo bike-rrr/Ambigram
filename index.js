@@ -14,9 +14,10 @@ const monthDays = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31] // we start a
 for (let i = 0; i < 12; i++) {                                     // we switch back and forth inside printDate Function
     dates.push(populateDays(monthDays[i] + 1));
 }
+
 // populate years
 const min = 1;
-const max = 1000000;
+const max = 5000;
 const years = [];
 for (let i = min; i < max; i++) {
     years.push(i)
@@ -25,11 +26,9 @@ for (let i = min; i < max; i++) {
 // main program
 let month = 0;
 let day = 0;
-// console.log(dates)
-
 const date = `${pad(month + 1)}-${pad(dates[month][day])}-2021`; // +1 is beacuse jan 1st is 1-1, not 0-0..we sliced off [0] in arrays
-
 let winners = 0;
+
 function findDates() {
     let year = 0;
     for (let i = 0; i < (max - min) * 365; i++) {
