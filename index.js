@@ -1,18 +1,3 @@
-// const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-// const days = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30"];
-// const years = "2021"
-
-
-// while (!day.includes("December") && !day.includes("30")) {
-
-// }
-// let month = 0;
-// let day = 0;
-// let year = 0;
-
-// for (let i = 0; i < 20; i++) {
-
-// }
 function pad(num) {
     let sub = "00";
     let number = "" + num.toString();
@@ -30,8 +15,8 @@ for (let i = 0; i < 12; i++) {                                     // we switch 
     dates.push(populateDays(monthDays[i] + 1));
 }
 // populate years
-const min = 0;
-const max = 100000;
+const min = 1;
+const max = 1000000;
 const years = [];
 for (let i = min; i < max; i++) {
     years.push(i)
@@ -44,7 +29,8 @@ let day = 0;
 
 const date = `${pad(month + 1)}-${pad(dates[month][day])}-2021`; // +1 is beacuse jan 1st is 1-1, not 0-0..we sliced off [0] in arrays
 
-function printdates() {
+let winners = 0;
+function findDates() {
     let year = 0;
     for (let i = 0; i < (max - min) * 365; i++) {
         const date = `${pad(month + 1)}-${pad(dates[month][day])}-${years[year]}`
@@ -53,8 +39,10 @@ function printdates() {
         let str = date.replace(/-/g, "");
         let rev = str.split("").reverse().join("");
         if (rev === str) {
+            // console.log(date)
             if (isAmbigram(str)) {
-                console.log(date)
+                console.log(`ANGIGRAM- ${date}`)
+                winners++;
             }
         }
 
@@ -100,6 +88,5 @@ function isAmbigram(str) {
         return true;
     }
 }
-printdates();
-// console.log(years);
-// console.log(isAmbigram('88007'))
+findDates();
+console.log(`there are ${winners} total in 1 Million Years`)
