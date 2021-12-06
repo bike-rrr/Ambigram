@@ -17,7 +17,7 @@ for (let i = 0; i < 12; i++) {                                     // we switch 
 
 // populate years
 const min = 1;
-const max = 5000;
+const max = 10000;
 const years = [];
 for (let i = min; i < max; i++) {
     years.push(i)
@@ -40,8 +40,11 @@ function findDates() {
         if (rev === str) {
             // console.log(date)
             if (isAmbigram(str)) {
-                console.log(`ANGIGRAM- ${date}`)
+                // console.log(`ANGIGRAM- ${date}`)
                 winners++;
+                console.log(`${date} **`)
+            } else {
+                console.log(date)
             }
         }
 
@@ -87,5 +90,12 @@ function isAmbigram(str) {
         return true;
     }
 }
+console.log("** Ambigram as well")
+console.log("")
+const start = new Date();
 findDates();
-console.log(`there are ${winners} total in 1 Million Years`)
+const end = new Date();
+console.log(`time is ${end - start}`)
+console.log()
+console.log(`there are ${winners} total in ${max - min} Years that are both Palindrome and Ambigram`)
+console.log()
