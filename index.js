@@ -35,12 +35,9 @@ function findDates() {
         const date = `${pad(month + 1)}${pad(dates[month][day])}${years[year]}`
 
         // check FOR PALINDROME and AMBIGRAM
-        // let str = date.replace(/-/g, "");
         let rev = date.split("").reverse().join("");
         if (rev === date) {
-            // console.log(date)
-            if (isAmbigram(rev)) {
-                // console.log(`ANGIGRAM- ${date}`)
+            if (isAmbigram(date)) {
                 winners++;
                 console.log(`${date} **`)
             } else {
