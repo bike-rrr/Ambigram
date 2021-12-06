@@ -32,14 +32,14 @@ let winners = 0;
 function findDates() {
     let year = 0;
     for (let i = 0; i < (max - min) * 365; i++) {
-        const date = `${pad(month + 1)}-${pad(dates[month][day])}-${years[year]}`
+        const date = `${pad(month + 1)}${pad(dates[month][day])}${years[year]}`
 
         // check FOR PALINDROME and AMBIGRAM
-        let str = date.replace(/-/g, "");
-        let rev = str.split("").reverse().join("");
-        if (rev === str) {
+        // let str = date.replace(/-/g, "");
+        let rev = date.split("").reverse().join("");
+        if (rev === date) {
             // console.log(date)
-            if (isAmbigram(str)) {
+            if (isAmbigram(rev)) {
                 // console.log(`ANGIGRAM- ${date}`)
                 winners++;
                 console.log(`${date} **`)
