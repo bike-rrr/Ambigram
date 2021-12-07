@@ -19,7 +19,7 @@ const notLeapYear = dates[1] = Array.from(Array(29).keys()).slice(1);
 
 // populate years
 const min = 1;
-const max = 10000;
+const max = 10001;
 const years = [];
 for (let i = min; i < max; i++) {
     years.push(i)
@@ -34,18 +34,20 @@ let winners = 0;
 function findDates() {
     let year = 0;
     let time_Diff = (max - min) * 365;
+
     for (let i = 0; i < time_Diff; i++) {
         const date = `${pad(month + 1)}${pad(dates[month][day])}${years[year]}`
         const len = date.length;
-        // if first and last are some
-        if (date[0] === date[len - 1]) {
+
+        // If first and last arent the same, it cant be a palindrome or ambigram
+        if (date[0] === date[len - 1] && date[1] === date[len - 2]) {
+
             // check FOR PALINDROME and AMBIGRAM
             let rev = '';
             for (let i = len - 1; i >= 0; i--) {
                 rev += date[i];
             }
             if (rev === date) {
-                // console.log(date)
                 // ambigram check
                 if (isAmbigram(rev)) {
                     // console.log(`ANGIGRAM- ${date}`)
@@ -55,20 +57,18 @@ function findDates() {
                     console.log(date)
                 }
             }
-
         }
 
         // CHECK FOR END OF MONTH
         if (dates[month][day] === dates[month].length) {
             // CHECK FOR LAST DAY OF YEAR
             if (month === 11) {
-                // console.log('last day of year')
                 month = 0;
                 day = 0;
                 year++;
                 checkForLeapYear(year); // checks the next year
             }
-            // ITS JUST THE END OF THE MONTH
+            // ITS JUST THE END OF THE MONTH and NOT a New Year
             else {
                 month++;
                 day = 0;
@@ -91,17 +91,16 @@ function checkForLeapYear(year) {
 }
 
 function isAmbigram(str) {
+    let len = str.length;
     let itsAmbigram = true;
     const AMBIGRAM_CHARS = ['0', '1', '2', '5', '8'];
-    for (let i = 0; i < str.length; i++) {
+    for (let i = 0; i < len; i++) {
         if (!AMBIGRAM_CHARS.includes(str[i])) {
             itsAmbigram = false;
             break;
         }
     }
-    if (itsAmbigram) {
-        return true;
-    }
+    return itsAmbigram;
 }
 console.log("** Ambigram as well")
 console.log("")
