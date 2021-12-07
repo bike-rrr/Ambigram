@@ -46,12 +46,12 @@ function findDates() {
         if (rev === date) {
             // console.log(date)
             // ambigram check
-            if (isAmbigram(rev)) {                
+            if (isAmbigram(rev)) {
                 // console.log(`ANGIGRAM- ${date}`)
                 winners++;
                 console.log(`${date} **`)
             } else {
-                console.log(date)             
+                console.log(date)
             }
         }
 
