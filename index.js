@@ -19,7 +19,7 @@ const notLeapYear = dates[1] = Array.from(Array(29).keys()).slice(1);
 
 // populate years
 const min = 1;
-const max = 10001;
+const max = 10000;
 const years = [];
 for (let i = min; i < max; i++) {
     years.push(i)
@@ -41,7 +41,6 @@ function findDates() {
 
         // If first and last arent the same, it cant be a palindrome or ambigram
         if (date[0] === date[len - 1] && date[1] === date[len - 2]) {
-
             // check FOR PALINDROME and AMBIGRAM
             let rev = '';
             for (let i = len - 1; i >= 0; i--) {
