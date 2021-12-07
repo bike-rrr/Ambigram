@@ -36,23 +36,26 @@ function findDates() {
     let time_Diff = (max - min) * 365;
     for (let i = 0; i < time_Diff; i++) {
         const date = `${pad(month + 1)}${pad(dates[month][day])}${years[year]}`
-
-        // check FOR PALINDROME and AMBIGRAM
-        let rev = '';
-        for (let i = date.length - 1; i >= 0; i--) {
-            rev += date[i];
-        }
-        // palindrome check
-        if (rev === date) {
-            // console.log(date)
-            // ambigram check
-            if (isAmbigram(rev)) {
-                // console.log(`ANGIGRAM- ${date}`)
-                winners++;
-                console.log(`${date} **`)
-            } else {
-                console.log(date)
+        const len = date.length;
+        // if first and last are some
+        if (date[0] === date[len - 1]) {
+            // check FOR PALINDROME and AMBIGRAM
+            let rev = '';
+            for (let i = len - 1; i >= 0; i--) {
+                rev += date[i];
             }
+            if (rev === date) {
+                // console.log(date)
+                // ambigram check
+                if (isAmbigram(rev)) {
+                    // console.log(`ANGIGRAM- ${date}`)
+                    winners++;
+                    console.log(`${date} **`)
+                } else {
+                    console.log(date)
+                }
+            }
+
         }
 
         // CHECK FOR END OF MONTH
